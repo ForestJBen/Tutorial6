@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender with Simple Layout -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <SimpleLayout/>
+        </Console>
+
+        <!-- File Appender for file access logs with Simple Layout -->
+        <File name="FileLogger" fileName="logs.txt">
+            <SimpleLayout/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Logger for file access that logs to both console and file -->
+        <Logger name="FileAccessLogger" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+        </Logger>
+
+        <!-- Logger for transaction data that only logs to console -->
+        <Logger name="TransactionLogger" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
